@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EduNova Academy — learn smarter with expert coaching, supportive mentors, and practical learning.">
+  <title>EduNova Academy | Learn. Grow. Succeed.</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #101b3f;
+      --blue: #3458eb;
+      --blue-dark: #2444ce;
+      --sky: #edf2ff;
+      --ink: #17213b;
+      --muted: #69738a;
+      --line: #e6eaf3;
+      --gold: #ffbd59;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { font-family: "DM Sans", sans-serif; color: var(--ink); background: #fff; }
+    h1,h2,h3,h4,h5,.navbar-brand { font-family: "Manrope", sans-serif; }
+    .section-pad { padding: 94px 0; }
+    .eyebrow { color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .section-title { color: var(--navy); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.045em; line-height: 1.15; }
+    .section-copy { color: var(--muted); line-height: 1.8; }
+    .navbar { background: rgba(255,255,255,.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(230,234,243,.8); }
+    .navbar-brand { font-weight: 800; color: var(--navy); letter-spacing: -.04em; font-size: 1.35rem; }
+    .brand-mark { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--blue); color: white; margin-right: 8px; font-weight: 800; }
+    .nav-link { color: #536078; font-weight: 600; font-size: .94rem; margin: 0 .25rem; }
+    .nav-link:hover,.nav-link.active { color: var(--blue); }
+    .btn-primary-custom { background: var(--blue); color: #fff; border: 1px solid var(--blue); border-radius: 12px; padding: 12px 20px; font-weight: 700; box-shadow: 0 9px 22px rgba(52,88,235,.2); transition: .2s ease; }
+    .btn-primary-custom:hover { background: var(--blue-dark); border-color: var(--blue-dark); color: #fff; transform: translateY(-2px); }
+    .btn-outline-custom { color: var(--navy); background: #fff; border: 1px solid #d9dfed; border-radius: 12px; padding: 12px 20px; font-weight: 700; transition: .2s ease; }
+    .btn-outline-custom:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
+    .hero { position: relative; overflow: hidden; padding: 100px 0 84px; background: radial-gradient(circle at 85% 15%, #e1e9ff 0, transparent 27%), linear-gradient(135deg,#f7f9ff 0%,#fff 60%); }
+    .hero::before { content:""; position:absolute; width:330px; height:330px; border:1px solid #dfe6ff; border-radius:50%; right:-110px; bottom:-190px; }
+    .hero h1 { color: var(--navy); font-weight: 800; letter-spacing: -.06em; font-size: clamp(2.7rem, 5.6vw, 4.8rem); line-height: 1.06; }
+    .hero h1 span { color: var(--blue); }
+    .hero-copy { color: var(--muted); font-size: 1.08rem; line-height: 1.85; max-width: 540px; }
+    .hero-art { min-height: 410px; display: grid; place-items: center; position: relative; }
+    .study-card { position: relative; width: min(100%, 440px); min-height: 350px; border-radius: 30px; padding: 30px; background: linear-gradient(145deg,#3157ec,#2039b7); color: white; box-shadow: 0 30px 70px rgba(40,68,190,.25); overflow: hidden; }
+    .study-card::after { content:""; position:absolute; width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,.18);right:-75px;top:-80px;box-shadow:0 0 0 28px rgba(255,255,255,.04),0 0 0 58px rgba(255,255,255,.03); }
+    .study-card-content { position: relative; z-index: 1; }
+    .mini-label { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.18); padding:7px 12px; border-radius:50px; font-size:.78rem; }
+    .book-icon { width: 76px; height: 76px; display:grid; place-items:center; border-radius:23px; background:var(--gold); color:var(--navy); font-size:2.1rem; margin:26px 0 20px; transform:rotate(-7deg); }
+    .progress-wrap { background:rgba(255,255,255,.18); border-radius:99px; height:7px; overflow:hidden; }
+    .progress-fill { width:76%; height:100%; background:#ffcf7e; border-radius:99px; }
+    .floating-note { position:absolute; background:#fff; border:1px solid var(--line); border-radius:16px; padding:13px 16px; box-shadow:0 15px 35px rgba(25,40,90,.12); color:var(--navy); font-weight:700; }
+    .floating-note small { display:block; color:var(--muted); font-weight:500; }
+    .note-one { top:26px; left:-14px; }
+    .note-two { bottom:20px; right:-8px; }
+    .stats { margin-top: 54px; padding-top: 25px; border-top: 1px solid var(--line); }
+    .stat-number { font-size:1.7rem; color:var(--navy); font-weight:800; }
+    .stat-label { color:var(--muted); font-size:.88rem; }
+    .soft-bg { background:#f7f9ff; }
+    .feature-card,.course-card,.step-card { height:100%; padding:27px; background:#fff; border:1px solid var(--line); border-radius:20px; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .feature-card:hover,.course-card:hover,.step-card:hover { transform:translateY(-6px); border-color:#cbd5ff; box-shadow:0 18px 45px rgba(27,48,110,.08); }
+    .icon-box { width:52px;height:52px;display:grid;place-items:center;border-radius:15px;background:var(--sky);color:var(--blue);font-size:1.45rem;margin-bottom:21px; }
+    .feature-card h3,.course-card h3,.step-card h3 { font-size:1.12rem; font-weight:800; color:var(--navy); }
+    .feature-card p,.course-card p,.step-card p { color:var(--muted); line-height:1.75; margin-bottom:0; font-size:.94rem; }
+    .course-card { padding:0; overflow:hidden; }
+    .course-top { padding:25px; background:linear-gradient(135deg,#eef2ff,#f8faff); min-height:135px; display:flex; align-items:flex-end; justify-content:space-between; }
+    .course-symbol { font-size:2.5rem; }
+    .course-tag { background:white; color:var(--blue); font-size:.75rem; font-weight:800; padding:7px 10px; border-radius:50px; }
+    .course-body { padding:25px; }
+    .course-meta { display:flex; gap:15px; flex-wrap:wrap; color:var(--muted); font-size:.84rem; margin:17px 0 21px; }
+    .course-meta span { display:flex; align-items:center; gap:5px; }
+    .about-panel { background:var(--navy); color:white; border-radius:28px; padding:clamp(28px,5vw,55px); position:relative; overflow:hidden; }
+    .about-panel::after { content:""; position:absolute; right:-100px; bottom:-180px; width:350px;height:350px;border:1px solid rgba(255,255,255,.14);border-radius:50%;box-shadow:0 0 0 35px rgba(255,255,255,.03),0 0 0 70px rgba(255,255,255,.025); }
+    .about-panel .section-title { color:white; }
+    .about-panel .section-copy { color:#c5cde0; }
+    .check-list { list-style:none; padding:0; margin:25px 0 0; }
+    .check-list li { margin:13px 0; color:#eef1ff; display:flex; gap:11px; align-items:flex-start; }
+    .check { flex:0 0 23px; width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:rgba(119,236,192,.16);color:#8ff0c7;font-size:.8rem;font-weight:900; }
+    .about-visual { position:relative; z-index:1; display:grid; place-items:center; min-height:290px; }
+    .orbit { width:230px;height:230px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:grid;place-items:center;position:relative; }
+    .orbit::before,.orbit::after { content:"";position:absolute;border:1px solid rgba(255,255,255,.14);border-radius:50%; }
+    .orbit::before { inset:22px; }.orbit::after { inset:45px; }
+    .orbit-center { width:100px;height:100px;border-radius:28px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-size:2.7rem;z-index:1;box-shadow:0 12px 30px rgba(0,0,0,.2); }
+    .orbit-dot { position:absolute; width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:#fff;color:var(--blue);font-size:1.25rem; }
+    .dot-a { top:15px;left:43px; }.dot-b { right:0;top:95px; }.dot-c { bottom:18px;left:57px; }
+    .step-number { font-size:.8rem; color:var(--blue); font-weight:800; letter-spacing:.12em; margin-bottom:19px; }
+    .cta-band { background:linear-gradient(115deg,#3458eb,#263fbd); color:#fff; border-radius:25px; padding:clamp(28px,5vw,52px); display:flex; align-items:center; justify-content:space-between; gap:25px; }
+    .cta-band h2 { font-size:clamp(1.8rem,3.4vw,2.7rem); font-weight:800; letter-spacing:-.04em; }
+    .cta-band p { color:#e0e6ff; margin:0; line-height:1.7; }
+    .btn-white { background:#fff;color:var(--blue);border:1px solid white;border-radius:12px;padding:13px 21px;font-weight:800;white-space:nowrap; }
+    .btn-white:hover { background:#eef2ff;color:var(--blue-dark); }
+    .contact-card { border:1px solid var(--line); border-radius:22px; padding:clamp(23px,4vw,38px); background:#fff; box-shadow:0 12px 35px rgba(20,35,80,.04); }
+    .form-control,.form-select { border-color:#dfe4ef; padding:13px 14px; border-radius:11px; }
+    .form-control:focus,.form-select:focus { border-color:#8ca0ff; box-shadow:0 0 0 .2rem rgba(52,88,235,.1); }
+    .form-label { font-size:.9rem; font-weight:700; color:var(--navy); }
+    .contact-info { display:flex;gap:15px;align-items:flex-start;margin:24px 0; }
+    .contact-info .icon-box { flex-shrink:0;margin:0;width:46px;height:46px; }
+    .contact-info strong { display:block;color:var(--navy);margin-bottom:4px; }
+    .contact-info span { color:var(--muted);font-size:.92rem; }
+    footer { background:#0b1431;color:#c4cce0;padding:32px 0; }
+    footer a { color:#e8ecff;text-decoration:none; }
+    footer a:hover { color:#fff; }
+    .footer-brand { color:#fff;font-family:"Manrope",sans-serif;font-weight:800;font-size:1.2rem; }
+    .whatsapp-float { position:fixed;right:20px;bottom:20px;z-index:1000;width:55px;height:55px;border-radius:50%;display:grid;place-items:center;background:#20c875;color:#fff;text-decoration:none;font-size:1.5rem;box-shadow:0 8px 25px rgba(0,0,0,.2);transition:.2s; }
+    .whatsapp-float:hover { transform:translateY(-4px);color:#fff; }
+    .toast-message { display:none; }
+    @media (max-width: 991.98px) {
+      .hero { padding-top:75px; }
+      .hero-art { margin-top:30px; }
+      .note-one { left:0; }.note-two { right:0; }
+      .navbar-collapse { padding:14px 0 8px; }
+    }
+    @media (max-width: 575.98px) {
+      .section-pad { padding:68px 0; }
+      .hero { padding:64px 0 58px; }
+      .hero-art { min-height:340px; }
+      .study-card { min-height:315px;padding:24px; }
+      .floating-note { padding:10px 12px;font-size:.86rem; }
+      .note-one { top:0; }.note-two { bottom:0; }
+      .stats { margin-top:35px; }
+      .cta-band { align-items:flex-start; flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container py-2">
+      <a class="navbar-brand d-flex align-items-center" href="#home" aria-label="EduNova Academy home">
+        <span class="brand-mark">E</span>EduNova <span class="ms-1 fw-normal">Academy</span>
+      </a>
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#why-us">Why Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-2 mt-3 mt-lg-0"><a class="btn btn-primary-custom" href="#contact">Enquire Now <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container position-relative">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="eyebrow mb-3">Your future starts here</div>
+            <h1>Learn today.<br><span>Lead tomorrow.</span></h1>
+            <p class="hero-copy mt-4 mb-4">Build confidence, strengthen your concepts, and move closer to your goals with a learning experience designed around you.</p>
+            <div class="d-flex flex-wrap gap-3">
+              <a class="btn btn-primary-custom" href="#courses">Explore Courses <span aria-hidden="true">→</span></a>
+              <a class="btn btn-outline-custom" href="#about">Discover EduNova</a>
+            </div>
+            <div class="stats row g-3">
+              <div class="col-4"><div class="stat-number">01:1</div><div class="stat-label">Personal attention</div></div>
+              <div class="col-4"><div class="stat-number">100%</div><div class="stat-label">Learning focus</div></div>
+              <div class="col-4"><div class="stat-number">∞</div><div class="stat-label">Room to grow</div></div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="hero-art">
+              <div class="floating-note note-one">✦ Learn at your pace<small>Support that fits you</small></div>
+              <div class="study-card">
+                <div class="study-card-content">
+                  <span class="mini-label">✦ Your learning journey</span>
+                  <div class="book-icon">📚</div>
+                  <h2 class="fw-bold mb-2">Small steps.<br>Big achievements.</h2>
+                  <p class="mb-4 text-white-50">Every concept learned is progress made.</p>
+                  <div class="d-flex justify-content-between small mb-2"><span>Learning momentum</span><strong>Keep going!</strong></div>
+                  <div class="progress-wrap"><div class="progress-fill"></div></div>
+                </div>
+              </div>
+              <div class="floating-note note-two">✓ Progress with purpose<small>One lesson at a time</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section-pad" id="why-us">
+      <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width:680px">
+          <div class="eyebrow mb-3">The EduNova difference</div>
+          <h2 class="section-title">A smarter way to learn</h2>
+          <p class="section-copy mt-3">Learning should feel clear, encouraging, and purposeful. We help students build a strong foundation for the next step.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3"><div class="feature-card"><div class="icon-box">🎯</div><h3>Goal-focused learning</h3><p>Keep lessons aligned with your learning goals and academic priorities.</p></div></div>
+          <div class="col-md-6 col-lg-3"><div class="feature-card"><div class="icon-box">🧠</div><h3>Clear concepts</h3><p>Build understanding step by step instead of relying only on memorisation.</p></div></div>
+          <div class="col-md-6 col-lg-3"><div class="feature-card"><div class="icon-box">🤝</div><h3>Supportive guidance</h3><p>Ask questions, practise regularly, and grow with helpful guidance.</p></div></div>
+          <div class="col-md-6 col-lg-3"><div class="feature-card"><div class="icon-box">📈</div><h3>Steady progress</h3><p>Develop better study habits and track the areas where you can improve.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section-pad soft-bg" id="about">
+      <div class="container">
+        <div class="about-panel">
+          <div class="row align-items-center g-4 position-relative">
+            <div class="col-lg-7 position-relative" style="z-index:1">
+              <div class="eyebrow mb-3" style="color:#aebdff">About EduNova Academy</div>
+              <h2 class="section-title">Helping students turn potential into progress.</h2>
+              <p class="section-copy mt-4">At EduNova Academy, our goal is to make learning more approachable and meaningful. We believe every student can improve with the right guidance, consistent practice, and a positive learning environment.</p>
+              <ul class="check-list">
+                <li><span class="check">✓</span><span>Student-centred learning approach</span></li>
+                <li><span class="check">✓</span><span>Focus on fundamentals and confidence</span></li>
+                <li><span class="check">✓</span><span>Encouraging environment to ask and grow</span></li>
+              </ul>
+              <a href="#contact" class="btn btn-white mt-4">Talk to Our Team <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="col-lg-5">
+              <div class="about-visual">
+                <div class="orbit">
+                  <div class="orbit-center">🎓</div>
+                  <div class="orbit-dot dot-a">✎</div>
+                  <div class="orbit-dot dot-b">✦</div>
+                  <div class="orbit-dot dot-c">✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="section-pad" id="courses">
+      <div class="container">
+        <div class="row align-items-end mb-5 g-3">
+          <div class="col-lg-7">
+            <div class="eyebrow mb-3">Explore your options</div>
+            <h2 class="section-title">Learning paths for your goals</h2>
+          </div>
+          <div class="col-lg-5"><p class="section-copy mb-0">Choose a learning path that matches your needs. Contact us to confirm subjects, batches, and current availability.</p></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <article class="course-card">
+              <div class="course-top"><span class="course-symbol">📘</span><span class="course-tag">FOUNDATION</span></div>
+              <div class="course-body"><h3>School Academic Support</h3><p>Strengthen subject fundamentals, practise important topics, and prepare with more confidence.</p><div class="course-meta"><span>◷ Flexible batches</span><span>✦ Concept-based</span></div><a class="fw-bold text-decoration-none" style="color:var(--blue)" href="#contact" data-course="School Academic Support">Enquire about course →</a></div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <article class="course-card">
+              <div class="course-top" style="background:linear-gradient(135deg,#fff4e4,#fffaf2)"><span class="course-symbol">📝</span><span class="course-tag">PREPARATION</span></div>
+              <div class="course-body"><h3>Exam Preparation</h3><p>Plan revision, practise questions, and improve your approach to exam preparation.</p><div class="course-meta"><span>◷ Planned revision</span><span>✦ Practice-focused</span></div><a class="fw-bold text-decoration-none" style="color:var(--blue)" href="#contact" data-course="Exam Preparation">Enquire about course →</a></div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <article class="course-card">
+              <div class="course-top" style="background:linear-gradient(135deg,#e7fbf4,#f5fffb)"><span class="course-symbol">💻</span><span class="course-tag">DIGITAL SKILLS</span></div>
+              <div class="course-body"><h3>Computer & Digital Basics</h3><p>Explore essential computer concepts and build practical digital confidence.</p><div class="course-meta"><span>◷ Ask for schedule</span><span>✦ Practical learning</span></div><a class="fw-bold text-decoration-none" style="color:var(--blue)" href="#contact" data-course="Computer & Digital Basics">Enquire about course →</a></div>
+            </article>
+          </div>
+        </div>
+        <p class="text-center text-secondary small mt-4 mb-0">Course names are starter content. Update them to match the academy’s actual subjects and offerings.</p>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section-pad soft-bg">
+      <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width:680px">
+          <div class="eyebrow mb-3">Simple process</div>
+          <h2 class="section-title">Start learning in three steps</h2>
+          <p class="section-copy mt-3">Getting started is easy. Tell us what you want to learn and we’ll help you understand the next steps.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4"><div class="step-card"><div class="step-number">STEP 01</div><h3>Share your goals</h3><p>Tell us your class, subject, or the skills you want to develop.</p></div></div>
+          <div class="col-md-4"><div class="step-card"><div class="step-number">STEP 02</div><h3>Find your learning path</h3><p>Discuss suitable courses, schedule options, and your learning needs.</p></div></div>
+          <div class="col-md-4"><div class="step-card"><div class="step-number">STEP 03</div><h3>Learn and improve</h3><p>Begin your learning journey with practice, consistency, and guidance.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-5">
+      <div class="container">
+        <div class="cta-band">
+          <div><h2 class="mb-3">Ready to take the next step?</h2><p>Let’s talk about your learning goals and find the right starting point.</p></div>
+          <a class="btn btn-white" href="#contact">Get in Touch <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section-pad pt-5" id="contact">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5">
+            <div class="eyebrow mb-3">Contact us</div>
+            <h2 class="section-title">Let’s plan your next step.</h2>
+            <p class="section-copy mt-3">Have a question about courses or batches? Send an enquiry and our team can guide you.</p>
+            <div class="contact-info"><div class="icon-box">✉</div><div><strong>Email</strong><span>your-email@example.com</span></div></div>
+            <div class="contact-info"><div class="icon-box">☎</div><div><strong>Phone</strong><span>+91 XXXXX XXXXX</span></div></div>
+            <div class="contact-info"><div class="icon-box">⌖</div><div><strong>Location</strong><span>Add academy address here</span></div></div>
+            <p class="small text-secondary mt-4">Remember to replace the sample contact details before publishing.</p>
+          </div>
+          <div class="col-lg-7">
+            <div class="contact-card">
+              <h3 class="fw-bold mb-2" style="color:var(--navy)">Send an enquiry</h3>
+              <p class="text-secondary mb-4">Fill in your details and choose the course you’re interested in.</p>
+              <form id="enquiryForm">
+                <div class="row g-3">
+                  <div class="col-md-6"><label for="fullName" class="form-label">Full name *</label><input class="form-control" id="fullName" name="fullName" placeholder="Enter your name" required></div>
+                  <div class="col-md-6"><label for="phone" class="form-label">Phone number *</label><input class="form-control" id="phone" name="phone" type="tel" inputmode="tel" pattern="[0-9+\-\s()]{7,18}" placeholder="Enter phone number" required></div>
+                  <div class="col-12"><label for="email" class="form-label">Email address</label><input class="form-control" id="email" name="email" type="email" placeholder="you@example.com"></div>
+                  <div class="col-12"><label for="course" class="form-label">Course of interest *</label><select class="form-select" id="course" name="course" required><option value="" selected disabled>Select a course</option><option>School Academic Support</option><option>Exam Preparation</option><option>Computer & Digital Basics</option><option>Other / Not sure yet</option></select></div>
+                  <div class="col-12"><label for="message" class="form-label">Your message</label><textarea class="form-control" id="message" name="message" rows="4" placeholder="Tell us what you would like to learn..."></textarea></div>
+                  <div class="col-12"><button class="btn btn-primary-custom w-100" type="submit">Prepare Enquiry <span aria-hidden="true">→</span></button></div>
+                  <div class="col-12"><div id="formNotice" class="alert alert-info toast-message mb-0" role="status"></div><p class="small text-secondary mb-0">Demo form: this page does not store or email submissions. Connect a backend, EmailJS, or your WhatsApp number to receive enquiries.</p></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row align-items-center g-3">
+        <div class="col-md-6"><a class="footer-brand text-decoration-none" href="#home">EduNova Academy</a><div class="small mt-2">Learn. Grow. Succeed.</div></div>
+        <div class="col-md-6 text-md-end"><div class="small">© <span id="year"></span> EduNova Academy. All rights reserved.</div><div class="small mt-2"><a href="#home">Back to top ↑</a></div></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Replace the sample phone number in the href with the academy's WhatsApp number, including country code. -->
+  <a class="whatsapp-float" href="https://wa.me/919999999999?text=Hello%20EduNova%20Academy%2C%20I%20would%20like%20to%20know%20about%20your%20courses." target="_blank" rel="noopener" aria-label="Chat with EduNova Academy on WhatsApp" title="WhatsApp enquiry">✆</a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Update the copyright year automatically.
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Close the mobile menu after clicking a navigation link.
+    document.querySelectorAll("#mainNav .nav-link, #mainNav .btn").forEach(function (link) {
+      link.addEventListener("click", function () {
+        const nav = document.getElementById("mainNav");
+        if (nav.classList.contains("show")) {
+          bootstrap.Collapse.getOrCreateInstance(nav).hide();
+        }
+      });
+    });
+
+    // Prefill the enquiry course when a course card link is clicked.
+    document.querySelectorAll("[data-course]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        const courseSelect = document.getElementById("course");
+        const selectedCourse = link.getAttribute("data-course");
+        for (const option of courseSelect.options) {
+          if (option.value === selectedCourse || option.text === selectedCourse) {
+            courseSelect.value = option.value || option.text;
+            break;
+          }
+        }
+      });
+    });
+
+    // Demo-only form behaviour: validates and opens a prepared WhatsApp message.
+    // Replace this number with the real academy WhatsApp number before launch.
+    document.getElementById("enquiryForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const data = new FormData(form);
+      const message = [
+        "Hello EduNova Academy, I would like to enquire about a course.",
+        "Name: " + data.get("fullName"),
+        "Phone: " + data.get("phone"),
+        "Email: " + (data.get("email") || "Not provided"),
+        "Course: " + data.get("course"),
+        "Message: " + (data.get("message") || "No additional message")
+      ].join("\n");
+      const notice = document.getElementById("formNotice");
+      notice.style.display = "block";
+      notice.textContent = "Your enquiry is ready. WhatsApp will open in a new tab; please review and send the message.";
+      // SAMPLE NUMBER: replace 919999999999 with the actual WhatsApp number.
+      const whatsappUrl = "https://wa.me/919999999999?text=" + encodeURIComponent(message);
+      window.open(whatsappUrl, "_blank", "noopener");
+    });
+  </script>
+</body>
+</html>
